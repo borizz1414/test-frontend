@@ -1,0 +1,77 @@
+.container{
+
+    width: 100%;
+    height: 100%;
+    color:white;
+}
+.container-login{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.card-login{
+    display: flex;
+    justify-content: space-between;
+    /* height: 66vh;
+    width: 36vw; */
+    padding: 0;
+}
+.img-login{
+    background-image: url('../../../../assets/img/background.jpg');
+    margin:0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+}
+.img-login img{
+    width: 140px;
+}
+.form-login{
+    width: 60%;
+    height: 100%;
+}
+.title{
+    margin-top: 40%;
+    margin-left:10%;
+    color:#27437e;
+}
+.form{
+    margin-left:10%;
+}
+.checkbox-container{
+    display: flex;
+    align-items: center;
+    width: 90%;
+    margin-top: 2%;
+    justify-content: space-between;
+}
+mat-form-field{
+    width: 90%;
+}
+mat-checkbox{
+    margin-left:5px;
+}
+.mat-raised-button.mat-primary{
+    background: #0cc3cd !important;  
+    width: 80%;
+    margin-left: 10%;
+    margin-bottom: 10%;
+
+}
+#turqueza{
+    color:#0cc3cd;
+}
+.forgot-password p{
+    color: darkgray;
+    cursor: pointer;
+}
+.privacy-policy p{
+    font-size: 0.8rem;
+    margin-top:5%;
+    color: grey;
+    
+}

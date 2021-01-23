@@ -1,0 +1,63 @@
+<div class="container ">
+    <div class="row">
+        <div class="col-12">
+
+            <div class="container-login">
+                <mat-card class="card-login">
+                    <div class="img-login">
+                        <img src="assets/img/Logo.png" alt="">
+                    </div>
+                    <div class="form-login">
+                        <div class="title">
+                            <p>SIGN IN</p>
+                            <h1>Welcome!</h1>
+                        </div>
+                        <div class="form">
+                            <form [formGroup]="form" (ngSubmit)="save($event)">
+                                <mat-form-field>
+                                    <mat-label>User</mat-label>
+                                    <input matInput formControlName="username" required>
+                        <mat-error *ngIf="form.controls.username.errors?.pattern">No se permite mayuscula, digitos y caracteres</mat-error>
+                        <mat-error *ngIf="form.controls.username.errors?.required">El username es
+                            obligatorio</mat-error>
+                                </mat-form-field>
+
+                                <mat-form-field>
+                                    <mat-label>Password</mat-label>
+                                    <input matInput formControlName="password" required>
+                                    <mat-error *ngIf="form.controls.password.errors?.required">El password es
+                                        obligatorio</mat-error>
+                                    <mat-error *ngIf="form.controls.password.errors?.pattern">Debe contener minuscula,
+                                        mayuscula, digitos y caracteres</mat-error>
+
+                                </mat-form-field>
+
+                                <div class="checkbox-container">
+                                    <div class="checkbox">
+                                        <mat-label>Remember Me</mat-label>
+                                        <mat-checkbox> </mat-checkbox>
+                                    </div>
+                                    <div class="forgot-password">
+                                        <p>forgot password?</p>
+                                    </div>
+
+                                </div>
+                                <div class="privacy-policy">
+                                    <p>Aceptar <span id="turqueza">Politicas de Privacidad</span><mat-checkbox required formControlName="checkbox"> </mat-checkbox>
+                                    </p>
+                                    
+                                </div>
+
+                                <button mat-raised-button color="primary" type="submit"  [disabled]="form.invalid"> Sign in </button>
+                            </form>
+                        </div>
+                    </div>
+                </mat-card>
+              
+       
+               
+            </div>
+        
+        </div>
+    </div>
+</div>
