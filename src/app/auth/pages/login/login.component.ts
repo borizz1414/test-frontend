@@ -10,9 +10,9 @@ import { DialogsComponent } from '../../components/dialogs/dialogs.component';
 })
 export class LoginComponent implements OnInit {
   form: FormGroup;
-  
-  constructor(private fb:FormBuilder,
-    public dialog: MatDialog) { 
+
+  constructor(private fb: FormBuilder,
+    public dialog: MatDialog) {
     this.buildForm();
   }
 
@@ -27,17 +27,17 @@ export class LoginComponent implements OnInit {
   }
   private buildForm() {
     this.form = this.fb.group({
-      username: ['', [Validators.required,Validators.pattern(/^[a-z]/) ] ],
-      password: [ '',  [ Validators.required, Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&][^'\s]/) ] ],
+      username: ['', [Validators.required, Validators.pattern(/^[a-z]/)]],
+      password: ['', [Validators.required, Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&][^'\s]/)]],
       checkbox: ['', [Validators.required]],
     });
     this.form.valueChanges
 
-.subscribe(value => {
-  console.log(value);
-});
-    
+      .subscribe(value => {
+        console.log(value);
+      });
+
   }
-  
+
 
 }

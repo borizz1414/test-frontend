@@ -1,1 +1,201 @@
-<p>register-players works!</p>
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-3 img-register">
+
+        </div>
+        <div class="col-9">
+            <mat-card>
+                <mat-horizontal-stepper [linear]="isLinear" #stepper>
+                    <mat-step [stepControl]="firstFormGroup">
+                        <form [formGroup]="firstFormGroup">
+                            <ng-template matStepLabel>Step 1</ng-template>
+                            <div class="row-form">
+                                <div class="col-form">
+                                    <mat-form-field>
+                                        <mat-label>Nombre</mat-label>
+                                        <input matInput formControlName="first_name" required>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-form">
+                                    <mat-form-field>
+                                        <mat-label>Apellido</mat-label>
+                                        <input matInput formControlName="last_name" required>
+                                    </mat-form-field>
+
+                                </div>
+
+                            </div>
+                            <div class="row-form">
+                                <div class="col-form">
+                                    <mat-form-field>
+                                        <mat-label>Altura pulgadas</mat-label>
+                                        <input matInput formControlName="height_feet">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-form">
+                                    <mat-form-field>
+                                        <mat-label>Altura pies</mat-label>
+                                        <input matInput formControlName="height_inches">
+                                    </mat-form-field>
+
+                                </div>
+
+                            </div>
+                            <div class="row-form">
+                                <div class="col-form">
+                                    <mat-form-field>
+                                        <mat-label>Peso</mat-label>
+                                        <input matInput formControlName="weight_pounds">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-form">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Posición</mat-label>
+                                        <mat-select (click)="addForm()" [(ngModel)]="select" required
+                                            formControlName="position" multiple>
+                                            <mat-select-trigger>
+
+                                            </mat-select-trigger>
+                                            <mat-option (click)="addForm()" *ngFor="let topping of toppingList"
+                                                [value]="topping">{{topping}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+
+
+                                </div>
+
+                            </div>
+                            <div class="row-form" *ngIf="verify">
+                                <div class="col-form">
+                                    <mat-form-field>
+                                        <mat-label>Comentarios</mat-label>
+                                        <input matInput formControlName="comments">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-form">
+                                    <mat-form-field>
+                                        <mat-label>Tiempo en la posición</mat-label>
+                                        <input matInput formControlName="time_position">
+                                    </mat-form-field>
+                                </div>
+
+                            </div>
+                            <div class="row-form">
+                                <div class="col-form">
+                                    <mat-form-field>
+                                        <mat-label>Fecha de nacimiento</mat-label>
+                                        <input matInput [(ngModel)]="date" (change)="getAge($event)" type="date"
+                                            formControlName="date" required>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-form">
+                                    <mat-form-field>
+                                        <mat-label>Edad</mat-label>
+                                        <input matInput formControlName="age">
+                                    </mat-form-field>
+
+                                </div>
+
+                            </div>
+
+
+
+
+                            <div>
+                                <button mat-button matStepperNext>Next</button>
+                            </div>
+                        </form>
+                    </mat-step>
+                    <mat-step [stepControl]="secondFormGroup" label="Step 2">
+                        <form [formGroup]="secondFormGroup">
+                            <div class="row-form">
+                                <div class="col-form">
+                                    <mat-form-field>
+                                        <mat-label>Abreviación</mat-label>
+                                        <input matInput formControlName="abbreviation" required>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-form">
+                                    <mat-form-field>
+                                        <mat-label>Conferencia</mat-label>
+                                        <input matInput formControlName="conference" required>
+                                    </mat-form-field>
+
+                                </div>
+
+                            </div>
+                            <div class="row-form">
+                                <div class="col-form">
+                                    <mat-form-field>
+                                        <mat-label>Comentario</mat-label>
+                                        <input matInput formControlName="comments_player" required>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-form">
+                                    <mat-form-field>
+                                        <mat-label>Nombre equipo</mat-label>
+                                        <input matInput formControlName="name_team" required>
+                                    </mat-form-field>
+
+                                </div>
+
+                            </div>
+                            <div class="row-form">
+                                <div class="col-form">
+                                    <mat-form-field>
+                                        <mat-label>Ciudad</mat-label>
+                                        <input matInput formControlName="city" required>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-form">
+                                    <button mat-raised-button color="primary" (click)="add(this.secondFormGroup.value)">
+                                        Agregar</button>
+                                </div>
+
+
+                            </div>
+                          
+                        </form>
+
+
+                        <table>
+                            <th *ngFor="let item of displayedColumns">
+                                {{item}}
+                            </th>
+                            <tr *ngFor="let item of dataSource ">
+                                <td>
+                                    {{item.abbreviation}}
+                                </td>
+                                <td>
+                                    {{item.name_team}}
+                                </td>
+                                <td>
+                                    {{item.conference}}
+                                </td>
+                                <td>
+                                    {{item.comments_player}}
+                                </td>
+                                <td>
+                                    {{item.city}}
+                                </td>
+                            </tr>
+                        </table>
+                        <div>
+                            <button mat-button matStepperPrevious>Back</button>
+                            <button mat-button matStepperNext>Next</button>
+                        </div>
+                    </mat-step>
+                    <mat-step>
+                        <ng-template matStepLabel>Finish</ng-template>
+                        <p>Registrado con exito.</p>
+                        <div>
+                            <button mat-button matStepperPrevious>Back</button>
+                            <button mat-button (click)="stepper.reset()">Reset</button>
+                        </div>
+                    </mat-step>
+                </mat-horizontal-stepper>
+            </mat-card>
+        </div>
+    </div>
+</div>

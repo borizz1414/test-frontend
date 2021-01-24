@@ -17,9 +17,10 @@
                                 <mat-form-field>
                                     <mat-label>User</mat-label>
                                     <input matInput formControlName="username" required>
-                        <mat-error *ngIf="form.controls.username.errors?.pattern">No se permite mayuscula, digitos y caracteres</mat-error>
-                        <mat-error *ngIf="form.controls.username.errors?.required">El username es
-                            obligatorio</mat-error>
+                                    <mat-error *ngIf="form.controls.username.errors?.pattern">No se permite mayuscula,
+                                        digitos y caracteres</mat-error>
+                                    <mat-error *ngIf="form.controls.username.errors?.required">El username es
+                                        obligatorio</mat-error>
                                 </mat-form-field>
 
                                 <mat-form-field>
@@ -43,21 +44,23 @@
 
                                 </div>
                                 <div class="privacy-policy">
-                                    <p>Aceptar <span id="turqueza">Politicas de Privacidad</span><mat-checkbox required formControlName="checkbox"> </mat-checkbox>
+                                    <p>Aceptar <span id="turqueza">Politicas de Privacidad</span>
+                                        <mat-checkbox required formControlName="checkbox"> </mat-checkbox>
                                     </p>
-                                    
+
                                 </div>
 
-                                <button mat-raised-button color="primary" type="submit"  [disabled]="form.invalid"> Sign in </button>
+                                <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid"> Sign
+                                    in </button>
                             </form>
                         </div>
                     </div>
                 </mat-card>
-              
-       
-               
+
+
+
             </div>
-        
+
         </div>
     </div>
 </div>
