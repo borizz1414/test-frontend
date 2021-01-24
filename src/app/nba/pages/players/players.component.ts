@@ -96,7 +96,7 @@ export class PlayersComponent {
       });
 
   }
- 
+
   infoTeam(e) {
     console.log(e)
   }

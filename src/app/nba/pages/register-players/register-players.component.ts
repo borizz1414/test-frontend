@@ -1,4 +1,4 @@
-import { Component, OnInit,NgModule } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 
@@ -13,27 +13,27 @@ export class RegisterPlayersComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   position = new FormControl();
-  verify:boolean;
+  verify: boolean;
   toppingList: string[] = ['A', 'B', 'C', 'D', 'E'];
-  displayedColumns = ['Abreviacion','Conferencia', 'Comentarios', 'Nombre equipo', 'Ciudad'];
+  displayedColumns = ['Abreviacion', 'Conferencia', 'Comentarios', 'Nombre equipo', 'Ciudad'];
   dataSource = [];
-  age:any;
-  date:any;
-  select:any = ['C'];
-  constructor(private _fb: FormBuilder) {}
-  
+  age: any;
+  date: any;
+  select: any = ['C'];
+  constructor(private _fb: FormBuilder) { }
+
   ngOnInit() {
     this.firstFormGroup = this._fb.group({
-      first_name: ['', [Validators.required,Validators.pattern(/^[a-z]/), Validators.minLength(3),  Validators.maxLength(20)]],
-      last_name: ['', [Validators.required,Validators.pattern(/^[a-z]/), Validators.minLength(3),  Validators.maxLength(20)]],
-      height_feet: ['', Validators.pattern(/^[0-9]+([,])?([0-9]+)?$/) ],
+      first_name: ['', [Validators.required, Validators.pattern(/^[a-z]/), Validators.minLength(3), Validators.maxLength(20)]],
+      last_name: ['', [Validators.required, Validators.pattern(/^[a-z]/), Validators.minLength(3), Validators.maxLength(20)]],
+      height_feet: ['', Validators.pattern(/^[0-9]+([,])?([0-9]+)?$/)],
       height_inches: ['', Validators.pattern(/^[0-9]+([,])?([0-9]+)?$/)],
       weight_pounds: ['', Validators.pattern(/^[0-9]+([,])?([0-9]+)?$/)],
       position: ['', Validators.required],
       date: ['', Validators.required],
       age: [this.age, Validators.required],
       comments: ['', Validators.required],
-      time_position: ['', [Validators.required,Validators.pattern(/^[0-9]/)]],
+      time_position: ['', [Validators.required, Validators.pattern(/^[0-9]/)]],
     });
 
     this.secondFormGroup = this._fb.group({
@@ -44,35 +44,35 @@ export class RegisterPlayersComponent implements OnInit {
       city: ['', Validators.required],
     });
   }
-  getAge(r){
+  getAge(r) {
     const today: Date = new Date();
     const birthDate: Date = new Date(this.date);
     this.age = today.getFullYear() - birthDate.getFullYear();
     const month: number = today.getMonth() - birthDate.getMonth();
     if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
-        this.age--;
+      this.age--;
     }
- 
+
     this.firstFormGroup.controls['age'].setValue(this.age)
 
   }
-  addForm(){
+  addForm() {
     console.log(this.select)
-    if(this.select.length > 0){
+    if (this.select.length > 0) {
       this.verify = true;
-    }else{
+    } else {
       this.verify = false;
     }
-    
+
   }
- add(e){
-  // this.dataSource = new MatTableDataSource(e);
-  console.log(e)
-   this.dataSource.push(e);
-   let a = this.dataSource.map(a =>{
-     console.log(a)
-   })
-  console.log(a)
- }
+  add(e) {
+    // this.dataSource = new MatTableDataSource(e);
+    console.log(e)
+    this.dataSource.push(e);
+    let a = this.dataSource.map(a => {
+      console.log(a)
+    })
+    console.log(a)
+  }
 
 }
